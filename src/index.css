@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-outfit: "Outfit", sans-serif;
+
+  /* Black Brown Dark Palette */
+  --color-primary-50: #fdfaf9;
+  --color-primary-100: #f7ede8;
+  --color-primary-200: #ead6cc;
+  --color-primary-300: #d4b4a3;
+  --color-primary-400: #b98b73;
+  --color-primary-500: #8b5740;
+  /* Rich Dark Brown */
+  --color-primary-600: #6d4433;
+  --color-primary-700: #533427;
+  --color-primary-800: #3a241c;
+  --color-primary-900: #261611;
+  --color-primary-950: #1a0e0a;
+}
+
+/* Custom dark mode variant for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Base resets & font */
+body {
+  font-family: var(--font-outfit);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply bg-stone-50 text-stone-900 transition-colors duration-500;
+}
+
+.dark body {
+  @apply bg-[#0c0a09] text-stone-100;
+  /* Deep Charcoal Black */
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass {
+  background: rgba(28, 25, 23, 0.7);
+  /* Dark Brownish-Black Glass */
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Custom transitions */
+.smooth-transition {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 87, 64, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(139, 87, 64, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 87, 64, 0);
+  }
+}
+
+.btn-glow {
+  animation: pulse-glow 2s infinite;
+}
